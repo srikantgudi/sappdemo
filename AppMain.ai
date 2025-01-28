@@ -1,0 +1,67 @@
+int Main::IsNumber(&String_16 str)
+{
+    for(var int i=0; i < str.length(); i++)
+    {
+        var char c = str.getAt(i);
+        if(str.isNumberChar(c) != 1)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+void Main::convertTemp() {
+   var PrintfClass pfc;
+   var double numTemp;
+   var double toTemp;
+   var char tempType = 'c';
+   var char toType;
+
+   pfc.fstr("\nConvert Temp\n").pr();
+
+   // while (tempType == 'c' || tempType == 'f') {
+   while (1) {
+    pfc.fstr("Enter number: ").prNoLF();
+    inline_cpp[[cin >> numTemp;]]
+    pfc.fstr("Enter type (c or f, any other to quit): ").prNoLF();
+    inline_cpp[[cin >> tempType;]]
+    if (tempType == 'c') {
+        toType = 'f';
+        toTemp = (numTemp * 1.8) + 32.0;
+        pfc.fstr("$ $ = $ $").saDbl(numTemp,0,2).sa(tempType).saDbl(toTemp,0,2).sa(toType).pr();
+    } else {
+        if (tempType == 'f') {
+            toType = 'c';
+            toTemp = (numTemp - 32.0) / 1.8;
+            pfc.fstr("$ $ = $ $").saDbl(numTemp,0,2).sa(tempType).saDbl(toTemp,0,2).sa(toType).pr();
+        } else {
+            return;
+        }
+    }
+   }
+
+}
+
+int Main::main()
+{ 
+   var PrintfClass pfc;
+   var CommandlineArgs args;
+   var QM qm;
+
+   var char opt;
+
+   while (opt != 'q') {
+       pfc.fstr("\nSappeur Demo App").pr();
+       pfc.fstr("\nc. Convert temperature\nq. Quit").pr();
+       pfc.fstr("\nEnter an option: ").pr();
+       inline_cpp[[cin >> opt;]]
+       
+       pfc.fstr("opt = $").sa(opt).pr();
+       if (opt == 'c') {
+        this.convertTemp();
+       }
+   }
+
+
+   return 1;
+}

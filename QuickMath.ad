@@ -1,0 +1,7 @@
+
+
+class QM
+{
+methods:
+    double pow(double base, double exponent);
+};

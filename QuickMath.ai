@@ -1,0 +1,10 @@
+
+
+double QM::pow(double base, double exponent)
+{
+    var double result;
+    inline_cpp[[ 
+        result = ::pow(base,exponent);
+    ]]
+    return result;
+}
